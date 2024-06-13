@@ -38,14 +38,16 @@
 			"prefix": "tbx",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "@angular/build:application",
 					"options": {
 						"baseHref": "/minecraft_toolbox/",
-						"outputPath": "projects/toolbox-main/dist",
-						"resourcesOutputPath": "media",
+						"outputPath": {
+							"base": "projects/toolbox-main/dist"
+						},
 						"index": "projects/toolbox-main/src/index.html",
-						"main": "projects/toolbox-main/src/main.ts",
-						"polyfills": "projects/toolbox-main/src/polyfills.ts",
+						"polyfills": [
+							"zone.js"
+						],
 						"tsConfig": "projects/toolbox-main/tsconfig.json",
 						"inlineStyleLanguage": "scss",
 						"assets": [
@@ -55,7 +57,8 @@
 							"projects/toolbox-main/src/styles.scss"
 						],
 						"scripts": [],
-						"webWorkerTsConfig": "projects/toolbox-main/tsconfig.worker.json"
+						"webWorkerTsConfig": "projects/toolbox-main/tsconfig.worker.json",
+						"browser": "projects/toolbox-main/src/main.ts"
 					},
 					"configurations": {
 						"production": {
@@ -80,9 +83,7 @@
 							"outputHashing": "all"
 						},
 						"development": {
-							"buildOptimizer": false,
 							"optimization": false,
-							"vendorChunk": true,
 							"extractLicenses": false,
 							"sourceMap": true,
 							"namedChunks": true
@@ -91,7 +92,7 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "@angular/build:dev-server",
 					"configurations": {
 						"production": {
 							"buildTarget": "toolbox-main:build:production"
@@ -141,12 +142,15 @@
 			"prefix": "tbx",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "@angular/build:application",
 					"options": {
-						"outputPath": "dist/toolbox-utilities",
+						"outputPath": {
+							"base": "dist/toolbox-utilities"
+						},
 						"index": "projects/toolbox-utilities/src/index.html",
-						"main": "projects/toolbox-utilities/src/main.ts",
-						"polyfills": "projects/toolbox-utilities/src/polyfills.ts",
+						"polyfills": [
+							"zone.js"
+						],
 						"tsConfig": "projects/toolbox-utilities/tsconfig.json",
 						"inlineStyleLanguage": "scss",
 						"assets": [
@@ -156,7 +160,8 @@
 						"styles": [
 							"projects/toolbox-utilities/src/styles.scss"
 						],
-						"scripts": []
+						"scripts": [],
+						"browser": "projects/toolbox-utilities/src/main.ts"
 					},
 					"configurations": {
 						"production": {
@@ -181,9 +186,7 @@
 							"outputHashing": "all"
 						},
 						"development": {
-							"buildOptimizer": false,
 							"optimization": false,
-							"vendorChunk": true,
 							"extractLicenses": false,
 							"sourceMap": true,
 							"namedChunks": true
@@ -192,7 +195,7 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "@angular/build:dev-server",
 					"configurations": {
 						"production": {
 							"buildTarget": "toolbox-utilities:build:production"

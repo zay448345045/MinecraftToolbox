@@ -165,5 +165,17 @@
 			"removals": []
 		},
 		"notes": ""
+	},
+	{
+		"version": "",
+		"build_date": "",
+		"changes": {
+			"additions": [],
+			"modifications": [
+				"The WebApp now runs on Angular 18"
+			],
+			"removals": []
+		},
+		"notes": ""
 	}
 ]

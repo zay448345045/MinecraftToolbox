@@ -3,7 +3,7 @@ import "./prototype/array.prototype";
 
 //Base Angular Modules
 import { APP_BASE_HREF } from "@angular/common";
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
@@ -89,8 +89,7 @@ import { DownloadComponent } from './common/views/windows/download/download.comp
 	],
 	imports: [
 		BrowserModule,
-		AppRoutingModule,
-		HttpClientModule
+		AppRoutingModule
 	],
 	providers: [
 		{
@@ -106,7 +105,8 @@ import { DownloadComponent } from './common/views/windows/download/download.comp
 			provide: HTTP_INTERCEPTORS,
 			useClass: CacheInterceptor,
 			multi: true
-		}
+		},
+		provideHttpClient(withInterceptorsFromDi())
 	],
 	bootstrap: [AppComponent]
 })
